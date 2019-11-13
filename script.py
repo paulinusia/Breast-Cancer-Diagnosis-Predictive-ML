@@ -47,8 +47,6 @@ if __name__ == '__main__':
     y = breast_data['diagnosis']
     x = breast_data.drop('diagnosis', axis=1)
     x = x.drop('id', axis=1)
-    #???
-    x = x.drop('Unnamed: 32', axis=1)
 
 
 
