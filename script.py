@@ -46,16 +46,30 @@ if __name__ == '__main__':
     #drop diagnosis
     y = breast_data['diagnosis']
     x = breast_data.drop('diagnosis', axis=1)
+    x = x.drop('id', axis=1)
+    #???
+    x = x.drop('Unnamed: 32', axis=1)
+
+
 
     #replace M and B with 1s and 0s
     y = y.replace(['M', 'B'], [1, 0])
     columns = x.columns
 
+
+    x = x.replace(0, np.nan)
+    #print(x.shape)
+    #print(x.columns)
+
+    #print(x.head())
+    #print(y.shape)
     #replace missing values with mean
     for col in x.columns:
-        x[col].replace(0, np.NaN)
         x[col].fillna(x[col].mean(), inplace=True)
-        #print(x[col])
+
+    
+    #print(x)
+       
 
     #standardize the dataset to have a mean of 0, allows us to compare different scales
     scaler = StandardScaler()
@@ -63,6 +77,7 @@ if __name__ == '__main__':
 
     standardized_data[columns] = pd.DataFrame(scaler.fit_transform(standardized_data[columns]))
 
+    print(standardized_data.head())
 
 
 
