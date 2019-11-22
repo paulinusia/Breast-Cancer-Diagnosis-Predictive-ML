@@ -1,0 +1,108 @@
+From most significant classifier to least
+Classifier w/ optimal hyperameters: 
+KNeighborsClassifier(algorithm='brute', leaf_size=30, metric='minkowski',
+           metric_params=None, n_jobs=1, n_neighbors=10, p=2,
+           weights='uniform')
+Confusion matrix
+             precision    recall  f1-score   support
+
+          0       0.96      0.98      0.97       108
+          1       0.97      0.94      0.95        63
+
+avg / total       0.96      0.96      0.96       171
+
+Area under Precision and Recall Curve: 0.963556432063766
+F1s score: 0.9516129032258064
+Accuracy: 0.9649122807017544
+
+Classifier w/ optimal hyperameters: 
+LogisticRegression(C=1000, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr', n_jobs=1,
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0, warm_start=False)
+Confusion matrix
+             precision    recall  f1-score   support
+
+          0       0.99      0.95      0.97       108
+          1       0.93      0.98      0.95        63
+
+avg / total       0.97      0.96      0.97       171
+
+Area under Precision and Recall Curve: 0.9576740358358583
+F1s score: 0.9538461538461538
+Accuracy: 0.9649122807017544
+
+Classifier w/ optimal hyperameters: 
+SVC(C=1, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape='ovr', degree=3, gamma='auto', kernel='linear',
+  max_iter=-1, probability=False, random_state=None, shrinking=True,
+  tol=0.001, verbose=False)
+Confusion matrix
+             precision    recall  f1-score   support
+
+          0       0.98      0.95      0.97       108
+          1       0.92      0.97      0.95        63
+
+avg / total       0.96      0.96      0.96       171
+
+Area under Precision and Recall Curve: 0.9520961494645706
+F1s score: 0.9457364341085271
+Accuracy: 0.9590643274853801
+
+Classifier w/ optimal hyperameters: 
+DecisionTreeClassifier(class_weight=None, criterion='entropy', max_depth=7,
+            max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, presort=False, random_state=0,
+            splitter='best')
+Confusion matrix
+             precision    recall  f1-score   support
+
+          0       0.98      0.94      0.96       108
+          1       0.90      0.97      0.93        63
+
+avg / total       0.95      0.95      0.95       171
+
+Area under Precision and Recall Curve: 0.9385043491080642
+F1s score: 0.9312977099236641
+Accuracy: 0.9473684210526315
+
+Classifier w/ optimal hyperameters: 
+SGDClassifier(alpha=0.0001, average=False, class_weight=None, epsilon=0.1,
+       eta0=0.0, fit_intercept=True, l1_ratio=0.15,
+       learning_rate='optimal', loss='hinge', max_iter=25, n_iter=None,
+       n_jobs=1, penalty='l1', power_t=0.5, random_state=None,
+       shuffle=True, tol=None, verbose=0, warm_start=False)
+Confusion matrix
+             precision    recall  f1-score   support
+
+          0       0.94      0.91      0.92       108
+          1       0.85      0.90      0.88        63
+
+avg / total       0.91      0.91      0.91       171
+
+Area under Precision and Recall Curve: 0.8952979463584334
+F1s score: 0.8769230769230769
+Accuracy: 0.9064327485380117
+
+Classifier w/ optimal hyperameters: 
+MLPClassifier(activation='relu', alpha=0.0001, batch_size='auto', beta_1=0.9,
+       beta_2=0.999, early_stopping=False, epsilon=1e-08,
+       hidden_layer_sizes=(100, 3), learning_rate='constant',
+       learning_rate_init=0.001, max_iter=25, momentum=0.9,
+       nesterovs_momentum=True, power_t=0.5, random_state=None,
+       shuffle=True, solver='adam', tol=0.0001, validation_fraction=0.1,
+       verbose=False, warm_start=False)
+Confusion matrix
+             precision    recall  f1-score   support
+
+          0       0.00      0.00      0.00       108
+          1       0.37      1.00      0.54        63
+
+avg / total       0.14      0.37      0.20       171
+
+Area under Precision and Recall Curve: 0.6842105263157895
+F1s score: 0.5384615384615384
+Accuracy: 0.3684210526315789
+
