@@ -20,7 +20,7 @@ from sklearn.linear_model import Perceptron
 
 #import seaborn as sns
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plot
 import numpy as np
 import pandas as pd
 
