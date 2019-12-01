@@ -32,6 +32,15 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from pydotplus import graph_from_dot_data
+'''
+Graphviz is not a python tool. The python packages at pypi provide a convenient way of using Graphviz in python code.
+You still have to install the Graphviz executables, which are not pythonic, thus not shipped with these packages. 
+You can install those e.g. with a general-purpose package manager such as homebrew
+
+brew install graphviz
+pydot.InvocationException: GraphViz's executables not found
+
+'''
 from sklearn.tree import export_graphviz
 from pydotplus import graph_from_dot_data
 
@@ -89,7 +98,7 @@ def mod_select_train(clfr_var, hypprm): #Train and tone model
     
     #Model Selection
     #Grid search
-    gs = GridSearchCV(clfr_var, param_grid = hypprm, cv = 10, scoring = 'f1', refit = True) #Verbose shows u wats going on
+    gs = GridSearchCV(clfr_var, param_grid = hypprm, cv = 10, scoring = 'f1', refit = True, iid= False) #Verbose shows u wats going on
     gs.fit(X_train, y_train)
         
     gs = gs.best_estimator_
@@ -113,10 +122,13 @@ def SupVM(): #Support Vector Machine
     return model_eval(mod_select_train(s_run, grid_param))
     
 def lr():#Logistic Regression
-    
+    '''
+    MAX ITERATION FOR DEFAULT SOLVER LBFGS DOES NOT CONVERGE- liblinear (simpiler solver converges)
+    '''
     grid_param = {'C' :[0.00001, 0.001, 1, 3, 5, 10, 50, 100, 1000]}
     
-    lr_run = LogisticRegression()
+ 
+    lr_run = LogisticRegression(solver= 'liblinear')
     lr_run.fit(X_train, y_train)
  
     print("LR")
@@ -125,7 +137,12 @@ def lr():#Logistic Regression
     
 
 def nnP():#Perceptron Neural Network
-    
+    '''
+    F-score is ill-defined and being set to 0.0 due to no predicted samples.
+    ConvergenceWarning: Stochastic Optimizer: Maximum iterations (25) reached and the optimization hasn't converged yet.
+    ConvergenceWarning: Stochastic Optimizer: Maximum iterations (50) reached and the optimization hasn't converged yet.
+    ConvergenceWarning: Stochastic Optimizer: Maximum iterations (100) reached and the optimization hasn't converged yet.
+    '''
     grid_param = {'hidden_layer_sizes' : [(100,3), (5,2)], 'max_iter':[25, 50, 100], 'solver': ['adam'], 'activation': ['relu'] }
     
     nnP_run = MLPClassifier()
@@ -163,6 +180,9 @@ def LP():
     return model_eval(mod_select_train(perceptron_model,grid_param))
 
 def KNN():
+    '''
+    Maximum number of iteration reached before convergence. Consider increasing max_iter to improve the fit.
+    '''
     grid_param = {'algorithm' : ['brute', 'ball_tree', 'kd_tree'], 'n_neighbors' : [1, 3, 5, 10, 15, 20]}
 
     knn_run = KNeighborsClassifier()
