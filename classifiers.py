@@ -19,6 +19,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import Perceptron
 
 #import seaborn as sns
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -55,6 +56,7 @@ x = x.replace(0, np.nan)
 #replace missing values with mean
 for col in x.columns:
     x[col].fillna(x[col].mean(), inplace=True)
+
 
 #standardize the dataset to have a mean of 0, allows us to compare different scales
 scaler = StandardScaler()
