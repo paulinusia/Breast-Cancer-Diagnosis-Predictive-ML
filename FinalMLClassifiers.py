@@ -39,7 +39,7 @@ sns.set_style("dark")
 colors = ["#800000", "#45ada8", "#2a363b", "#fecea8", "#99b898", "#e5fcc2"]
 sns.set_palette(sns.color_palette(colors))
 
-breast_data = pd.read_csv('./data.csv')
+breast_data = pd.read_csv('./data/data.csv')
 #breast_data = breast_data.drop(['ID','Unnamed: 32'],axis=1)
 
 #drop diagnosis, create X and Y

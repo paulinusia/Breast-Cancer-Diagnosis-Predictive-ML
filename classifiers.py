@@ -39,7 +39,7 @@ sns.set_style("dark")
 colors = ["#800000", "#45ada8", "#2a363b", "#fecea8", "#99b898", "#e5fcc2"]
 sns.set_palette(sns.color_palette(colors))
 
-breast_data = pd.read_csv('data.csv')
+breast_data = pd.read_csv('./data/data.csv')
 #breast_data = breast_data.drop(['ID','Unnamed: 32'],axis=1)
 
 #drop diagnosis, create X and Y
@@ -102,7 +102,7 @@ def mod_select_train(clfr_var, hypprm): #Train and tone model
 #Run classifiers -------------------------------------------------------------------------
 
 def Perceptron():
-    grid_param={'tol':[1e-3], "random_state":[0], "max_iter":[10,20,30]}
+    grid_param={'tol':[1e-3], "random_state":[0], "max_iter":[15,20,30]}
     perceptron_model= Perceptron()
     perceptron_model.fit(X_train, y_train)
     print("Perceptron")
