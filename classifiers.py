@@ -42,13 +42,32 @@ sns.set_palette(sns.color_palette(colors))
 breast_data = pd.read_csv('./data/data.csv')
 #breast_data = breast_data.drop(['ID','Unnamed: 32'],axis=1)
 
+breast_data['diagnosis'] = breast_data['diagnosis'].replace(['M', 'B'], [1, 0])
+
+
+# Class count
+count_class_0, count_class_1 = breast_data.diagnosis.value_counts()
+
+
+# Divide by class
+df_class_0 = breast_data[breast_data['diagnosis'] == 0]
+df_class_1 = breast_data[breast_data['diagnosis'] == 1]
+
+
+#oversample X_train
+df_class_1_over = df_class_1.sample(count_class_0, replace=True)
+df_test_over = pd.concat([df_class_0, df_class_1_over], axis=0)
+
+
+breast_data = df_test_over
+
 #drop diagnosis, create X and Y
 y = breast_data['diagnosis']
 x_ = breast_data.drop('diagnosis', axis=1)
 x = x_.drop('id', axis = 1)
 
 #replace M and B with 1s and 0s
-y = y.replace(['M', 'B'], [1, 0])
+#y = y.replace(['M', 'B'], [1, 0])
 columns = x.columns
 
 x = x.replace(0, np.nan)
